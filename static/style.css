@@ -1,0 +1,295 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eafcff;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.12), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(0, 120, 255, 0.12), transparent 30%),
+        #050a12;
+    overflow-x: hidden;
+}
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(0, 220, 255, 0.08);
+    filter: blur(100px);
+    top: -180px;
+    left: -150px;
+    pointer-events: none;
+}
+
+.container {
+    width: min(92%, 620px);
+    margin: auto;
+    padding: 35px 0 25px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #66eaff;
+    margin-bottom: 25px;
+}
+
+.brand-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #00eaff;
+    box-shadow: 0 0 15px #00eaff;
+}
+
+.review-card {
+    position: relative;
+    padding: 35px 30px;
+    border: 1px solid rgba(0, 234, 255, 0.25);
+    border-radius: 24px;
+    background: rgba(7, 16, 27, 0.88);
+    box-shadow:
+        0 0 40px rgba(0, 200, 255, 0.08),
+        inset 0 0 30px rgba(0, 200, 255, 0.025);
+    backdrop-filter: blur(15px);
+}
+
+.small-title {
+    text-align: center;
+    color: #00dfff;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #8da6b5;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.stars {
+    text-align: center;
+    font-size: 42px;
+    letter-spacing: 5px;
+    color: #00eaff;
+    text-shadow: 0 0 18px rgba(0, 234, 255, 0.65);
+    margin-bottom: 5px;
+}
+
+.rating-number {
+    text-align: center;
+    color: #8da6b5;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+#ratingValue {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+input[type="range"] {
+    width: 100%;
+    appearance: none;
+    height: 7px;
+    border-radius: 10px;
+    outline: none;
+    background: linear-gradient(
+        to right,
+        #00eaff 0%,
+        #00eaff 100%
+    );
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #00eaff;
+    border: 3px solid #07121d;
+    box-shadow: 0 0 18px #00eaff;
+}
+
+.rating-message {
+    min-height: 70px;
+    margin: 25px 0;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 234, 255, 0.15);
+    background: rgba(0, 234, 255, 0.035);
+    color: #bcefff;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    color: #9fb6c4;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    border: 1px solid rgba(0, 234, 255, 0.18);
+    border-radius: 13px;
+    padding: 15px;
+    outline: none;
+    background: rgba(2, 8, 15, 0.75);
+    color: white;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 15px rgba(0, 234, 255, 0.12);
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+button {
+    margin-top: 15px;
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    background: #00dfff;
+    color: #031019;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0, 223, 255, 0.35);
+    transition: 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(0, 223, 255, 0.55);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 22px;
+    color: #4f6876;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 500px) {
+
+    .container {
+        width: 94%;
+        padding-top: 20px;
+    }
+
+    .review-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .stars {
+        font-size: 34px;
+    }
+}
+.success-card {
+    text-align: center;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border: 2px solid #00eaff;
+
+    color: #00eaff;
+    font-size: 38px;
+    font-weight: bold;
+
+    box-shadow:
+        0 0 20px rgba(0, 234, 255, 0.35),
+        inset 0 0 20px rgba(0, 234, 255, 0.08);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 52px;
+
+    margin-top: 20px;
+
+    border-radius: 14px;
+
+    background: #00dfff;
+    color: #031019;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+
+    box-shadow: 0 0 20px rgba(0, 223, 255, 0.35);
+
+    transition: 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 30px rgba(0, 223, 255, 0.55);
+}

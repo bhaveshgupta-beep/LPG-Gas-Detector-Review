@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LPG Gas Guardian | Project Review</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="background-glow"></div>
+
+    <main class="container">
+
+        <div class="brand">
+            <div class="brand-dot"></div>
+            LPG GAS GUARDIAN
+        </div>
+
+        <section class="review-card">
+
+            <div class="small-title">
+                PROJECT FEEDBACK
+            </div>
+
+            <h1>
+                How did we do?
+            </h1>
+
+            <p class="subtitle">
+                Your feedback helps us improve our project.
+            </p>
+
+
+            <!-- Stars -->
+
+            <div class="stars" id="stars">
+                ★★★★★
+            </div>
+
+            <div class="rating-number">
+                <span id="ratingValue">5</span>/5
+            </div>
+
+
+            <!-- Slider -->
+
+            <input
+                type="range"
+                id="rating"
+                name="rating"
+                min="1"
+                max="5"
+                value="5"
+                step="1"
+            >
+
+
+            <!-- Dynamic message -->
+
+            <div class="rating-message" id="ratingMessage">
+                Thank you so much! Your review gives us relief
+                that solving those errors was worth it 🥹💙✨
+            </div>
+
+
+            <!-- Review form -->
+
+            <form action="/submit" method="POST">
+
+                <input
+                    type="hidden"
+                    id="hiddenRating"
+                    name="rating"
+                    value="5"
+                >
+
+                <label>Your name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    maxlength="50"
+                    required
+                >
+
+
+                <label>Your review</label>
+
+                <textarea
+                    name="review"
+                    placeholder="Tell us what you think..."
+                    maxlength="500"
+                    required
+                ></textarea>
+
+
+                <button type="submit">
+                    SUBMIT REVIEW
+                </button>
+
+            </form>
+
+        </section>
+
+        <div class="footer">
+            ESP32 • MQ-6 • RFID • LPG GAS GUARDIAN
+        </div>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
