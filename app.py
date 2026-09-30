@@ -1,9 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
 from datetime import datetime
+import urllib.request
+import json
 
 app = Flask(__name__)
 
 REVIEWS_FILE = "reviews.txt"
+
+GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfhrGMgKvfuhCbSjPhZwDsaHHScO6km-GrVBG_8X5AlPW2A-vJPE0yZv3ZNGtyLUUk/exec"
 
 
 @app.route("/")
@@ -29,6 +33,7 @@ def submit_review():
 
         current_time = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
+        # Save a local copy
         with open(REVIEWS_FILE, "a", encoding="utf-8") as file:
 
             file.write("\n")
@@ -42,6 +47,32 @@ def submit_review():
             file.write(f"Date: {current_time}\n")
 
             file.write("\n" + "=" * 45 + "\n")
+
+        # Send review to Google Sheet
+        data = {
+            "name": name,
+            "rating": rating,
+            "review": review
+        }
+
+        try:
+
+            json_data = json.dumps(data).encode("utf-8")
+
+            req = urllib.request.Request(
+                GOOGLE_SCRIPT_URL,
+                data=json_data,
+                headers={
+                    "Content-Type": "application/json"
+                },
+                method="POST"
+            )
+
+            urllib.request.urlopen(req, timeout=10)
+
+        except Exception as error:
+
+            print("Google Sheet error:", error)
 
     return render_template("success.html")
 
